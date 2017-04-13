@@ -43,15 +43,13 @@ RUN apt-get install -y \
     php5-memcache \    
     php5-apcu 
     
-    
+# INSTALL XDEBUG
 RUN wget http://xdebug.org/files/xdebug-2.5.1.tgz && tar -xvzf xdebug-2.5.1.tgz
-
 RUN cd xdebug-2.5.1 \
     && phpize \
     && ./configure \
     && make \
     && cp modules/xdebug.so /usr/lib/php5/20131226
-    
 RUN rm -rf xdebug-2.5.1.tgz
 RUN rm -rf -R xdebug-2.5.1
     
@@ -60,6 +58,11 @@ RUN a2enmod rewrite
 
 # INSTALL COMPOSER 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/bin --filename=composer
+
+# INSTALL SYMFONY INSTALLER
+RUN mkdir -p /usr/local/bin
+RUN curl -LsS https://symfony.com/installer -o /usr/local/bin/symfony
+RUN chmod a+x /usr/local/bin/symfony
 
 # ALTER CONFIG 
 COPY conf/php.ini /etc/apache2/cli/php.ini

@@ -13,7 +13,7 @@ services:
     image: peleja-server:1.0
     container_name: api
     volumes:
-      - $PWD/../notorious.server:/var/www/peleja
+      - ../:/var/www/peleja
     tty: true
     ports:
       - "8080:80"
