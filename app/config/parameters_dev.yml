@@ -1,0 +1,6 @@
+parameters:
+    database_host: peleja_db
+    database_port: 3306
+    database_name: peleja
+    database_user: root
+    database_password: fr33s0ftw4r3

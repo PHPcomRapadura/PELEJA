@@ -1,17 +1,17 @@
 version: '3'
 services:
-  db:
+  peleja_db:
     image: mysql:5.7
-    container_name: db
+    container_name: peleja_db
     networks:
       - isolated_nw
     environment:
       MYSQL_DATABASE: peleja
       MYSQL_ROOT_PASSWORD: fr33s0ftw4r3
-  api:
+  peleja_api:
     build: .
     image: peleja-server:1.0
-    container_name: api
+    container_name: peleja_api
     volumes:
       - ../:/var/www/peleja
     tty: true
