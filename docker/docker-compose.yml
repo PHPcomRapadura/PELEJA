@@ -1,0 +1,26 @@
+version: '3'
+services:
+  db:
+    image: mysql:5.7
+    container_name: db
+    networks:
+      - isolated_nw
+    environment:
+      MYSQL_DATABASE: peleja
+      MYSQL_ROOT_PASSWORD: fr33s0ftw4r3
+  api:
+    build: .
+    image: peleja-server:1.0
+    container_name: api
+    volumes:
+      - $PWD/../notorious.server:/var/www/peleja
+    tty: true
+    ports:
+      - "8080:80"
+    networks:
+      - isolated_nw
+    environment:
+      XDEBUG_KEY: PHPSTORM
+networks:
+  isolated_nw:
+    driver: bridge
