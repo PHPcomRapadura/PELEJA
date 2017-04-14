@@ -83,3 +83,9 @@ vich_uploader:
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
+        community_manager_avatar:
+            uri_prefix: /uploads/images/community_managers
+            upload_destination: %kernel.root_dir%/../web/uploads/images/community_managers
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true

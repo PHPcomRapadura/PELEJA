@@ -1,6 +1,14 @@
 # Easy Admin
 easy_admin:
     site_name: 'PELEJA <em style="font-size: 50%;">PHP com Rapadura.</em>'
+    design:
+        menu:
+            - { entity: 'User', icon: 'user' }
+            - label: 'Communities'
+              icon: 'users'
+              children:
+                - { label: 'Community', entity: 'Community' }
+                - { label: 'Community manager', entity: 'CommunityManager' }
     entities:
         User:
           class: PhpComRapadura\UserBundle\Entity\User
@@ -20,4 +28,9 @@ easy_admin:
                 fields:
                     - name
                     - { property: 'description', type: 'ckeditor', type_options: { required: false } }
+                    - { property: 'avatarFile', type: 'vich_image', type_options: { required: false } }
+        CommunityManager:
+            class: PhpComRapadura\CommunityBundle\Entity\CommunityManager
+            form:
+                fields:
                     - { property: 'avatarFile', type: 'vich_image', type_options: { required: false } }

@@ -23,6 +23,11 @@ class User extends BaseUser
     protected $id;
 
     /**
+     * @ORM\OneToOne(targetEntity="PhpComRapadura\CommunityBundle\Entity\CommunityManager", mappedBy="user", cascade={"persist"})
+     */
+    protected $communityManager;
+
+    /**
      * Get id
      *
      * @return integer 
