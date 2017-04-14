@@ -1,7 +1,9 @@
 imports:
     - { resource: security.yml }
     - { resource: services.yml }
+    - { resource: easy-admin.yml }
     - { resource: "@UserBundle/Resources/config/services.yml" }
+    - { resource: "@CommunityBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -10,13 +12,13 @@ parameters:
 
 framework:
     #esi: ~
-    #translator: { fallbacks: ['%locale%'] }
+    translator: ~
     secret: '%secret%'
     router:
         resource: '%kernel.root_dir%/config/routing.yml'
         strict_requirements: ~
     form: ~
-    csrf_protection: ~
+    csrf_protection: true
     validation: { enable_annotations: true }
     #serializer: { enable_annotations: true }
     templating:
@@ -65,14 +67,19 @@ swiftmailer:
     password: '%mailer_password%'
     spool: { type: memory }
 
-# Easy Admin
-easy_admin:
-    entities:
-        - PhpComRapadura\UserBundle\Entity\User
-
 nelmio_api_doc: ~
 
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: PhpComRapadura\UserBundle\Entity\User
+
+vich_uploader:
+    db_driver: orm
+    mappings:
+        community_avatar:
+            uri_prefix: /uploads/images/communities
+            upload_destination: %kernel.root_dir%/../web/uploads/images/communities
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true

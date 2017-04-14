@@ -1,0 +1,3 @@
+community_homepage:
+    path:     /
+    defaults: { _controller: CommunityBundle:Default:index }
