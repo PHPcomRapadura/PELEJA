@@ -64,6 +64,11 @@ RUN mkdir -p /usr/local/bin
 RUN curl -LsS https://symfony.com/installer -o /usr/local/bin/symfony
 RUN chmod a+x /usr/local/bin/symfony
 
+# INSTALL PHPUNIT
+RUN wget https://phar.phpunit.de/phpunit-5.7.phar
+RUN chmod +x phpunit-5.7.phar
+RUN mv phpunit-5.7.phar /usr/local/bin/phpunit
+
 # ALTER CONFIG 
 COPY conf/php.ini /etc/apache2/cli/php.ini
 COPY conf/xdebug.ini /etc/php5/cli/conf.d/xdebug.ini
